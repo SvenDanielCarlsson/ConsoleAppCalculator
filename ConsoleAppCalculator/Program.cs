@@ -29,9 +29,13 @@ namespace ConsoleAppCalculator
                         break;
 
                     case 3:
+                        Console.Clear();
+                        Division();
                         break;
 
                     case 4:
+                        Console.Clear();
+                        Multiplication();
                         break;
 
                     default:
@@ -103,10 +107,35 @@ namespace ConsoleAppCalculator
 
             double num1, num2, numSum;
             num1 = AskUserForNumber("your first number: ");
-            num2 = AskUserForNumber("a number to subtract: ");
+            num2 = AskUserForNumber("a number to subtract with: ");
 
             numSum = num1 - num2;
             Console.WriteLine("\n" + num1 + " - " + num2 + " = " + numSum + "\n");
+        }
+
+        static void Division()
+        {
+            Console.WriteLine("~ Division ~");
+
+            double num1, num2, numSum;
+            num1 = AskUserForNumber("a number to be divided: ");
+            num2 = AskUserForNumber("a number to divide with: ");
+
+            numSum = num1 / num2;
+            Console.WriteLine("\n" + num1 + " / " + num2 + " = " + numSum + "\n");
+        }
+
+
+        static void Multiplication()
+        {
+            Console.WriteLine("~ Multiplication ~");
+
+            double num1, num2, numSum;
+            num1 = AskUserForNumber("your first number: ");
+            num2 = AskUserForNumber("a number to multiply by: ");
+
+            numSum = num1 * num2;
+            Console.WriteLine("\n" + num1 + " * " + num2 + " = " + numSum + "\n");
         }
     }
 }
