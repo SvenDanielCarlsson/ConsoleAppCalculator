@@ -24,6 +24,8 @@ namespace ConsoleAppCalculator
                         break;
 
                     case 2:
+                        Console.Clear();
+                        Subtraction();
                         break;
 
                     case 3:
@@ -78,7 +80,9 @@ namespace ConsoleAppCalculator
 
 
 
-        //      Mathematical methods
+
+
+        //  -   -   -   -   Mathematical methods    -   -   -   -
         
         static void Addition()
         {
@@ -86,11 +90,23 @@ namespace ConsoleAppCalculator
             double num1, num2, numSum;
             
             num1 = AskUserForNumber("your first number: ");
-            num2 = AskUserForNumber("your second number: ");
+            num2 = AskUserForNumber("a number to add: ");
 
             numSum = num1 + num2;
-            Console.WriteLine("\n" + num1 + " + " + num2 +" = " + numSum);
-            
+            Console.WriteLine("\n" + num1 + " + " + num2 +" = " + numSum + "\n");            
+        }
+
+
+        static void Subtraction()
+        {
+            Console.WriteLine("~ Subtraction ~");
+
+            double num1, num2, numSum;
+            num1 = AskUserForNumber("your first number: ");
+            num2 = AskUserForNumber("a number to subtract: ");
+
+            numSum = num1 - num2;
+            Console.WriteLine("\n" + num1 + " - " + num2 + " = " + numSum + "\n");
         }
     }
 }
