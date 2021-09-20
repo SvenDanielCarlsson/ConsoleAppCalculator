@@ -65,20 +65,22 @@ namespace ConsoleAppCalculator
 
         static double AskUserForNumber(string what)
         {
-            bool notNumber = true;
+            bool notNumber;
             string testInput;
-            double result = 0;
+            double result;
 
-            // REPLACE WITH A TRY/CATCH         !!!!!           !!!!!
             do
             {
                 testInput = AskUserFor(what);
-                notNumber = !double.TryParse(testInput, out result);
-
-                if(notNumber == true)
+                try
                 {
-                    Console.WriteLine("'" + testInput + "' is not a number");
+                    result = double.Parse(testInput);
                 }
+                catch (FormatException)
+                {
+                    Console.WriteLine($"'{testInput}' is not a number");
+                }
+                notNumber = !double.TryParse(testInput, out result);
             } while (notNumber);
 
             return result;
@@ -93,7 +95,13 @@ namespace ConsoleAppCalculator
 
         static double[] AskForMultipleNumbers()
         {
-            int howMany = (int)AskUserForNumber("how many numbers you want to use: ");
+            int howMany;
+            do
+            {
+                howMany = (int)AskUserForNumber("how many inputs (max 20) you want to use: ");
+                if (howMany > 20) { howMany = 20; }
+            } while (howMany < 0);
+
             double[] userInput = new double[howMany];
 
             for (int i = 0; i < userInput.Length; i++)
@@ -131,6 +139,10 @@ namespace ConsoleAppCalculator
                     case 3:
                         addLoop = false;
                         break;
+                    default:
+                        Console.WriteLine("Incorrect selection");
+                        ResetScreen();
+                        break;
                 }
             }
         }//End of Addition
@@ -159,6 +171,10 @@ namespace ConsoleAppCalculator
                     case 3:
                         subLoop = false;
                         break;
+                    default:
+                        Console.WriteLine("Incorrect selection");
+                        ResetScreen();
+                        break;
                 }
             }
         }//End of Subtraction
@@ -166,76 +182,17 @@ namespace ConsoleAppCalculator
         static void Division()
         {
             Console.WriteLine("~ Division ~");
-            double num1, num2;
-            //numSum;
-            //throw DivideByZeroException(num1, num2) // this way?
-
-            do
-            {
-                num1 = AskUserForNumber("a number to be divided: ");
-                if(num1 == 0)
-                {
-                    Console.WriteLine(num1 + " cant be divided");
-                    //throw Exception(num1 + " can't be divided");
-                    //throw DivideByZeroException(num1 + "can't be divided")    <-- CREATE A CORRECT EXCEPTION  !!
-                }
-            } while (num1 == 0);
-
-            do
-            {
-                num2 = AskUserForNumber("a number to divide with: ");
-                if(num2 == 0)
-                {
-                    Console.WriteLine(num1 + " can not be divided by " + num2);
-                }
-            } while (num2 == 0);
-
-            Console.WriteLine($"the result is: { Calc.Divider(num1, num2)}");
-            //numSum = num1 / num2;
-            //Console.WriteLine("\n" + num1 + " / " + num2 + " = " + numSum + "\n");
-        }
-
-
+            Console.WriteLine(Calc.Divider(Convert.ToDecimal(AskUserForNumber("a number to be divided: ")), Convert.ToDecimal(AskUserForNumber("a number to divide with: "))));
+        }        
         static void Multiplication()
         {
             Console.WriteLine("~ Multiplication ~");
-            Console.WriteLine($"the sum is: {Calc.Multplier(AskUserForNumber("the first number: "), AskUserForNumber("Number to multiply with: "))}");
-
-            //double num1, num2;
-            //numSum;
-            /*num1 = AskUserForNumber("your first number: ");
-            num2 = AskUserForNumber("a number to multiply with: ");
-
-            numSum = num1 * num2;
-            Console.WriteLine("\n" + num1 + " * " + num2 + " = " + numSum + "\n");*/
+            Console.WriteLine($"the sum is: {Calc.Multplier(AskUserForNumber("the first number: "), AskUserForNumber("a number to multiply with: "))}");
         }
-
-
         static void Exponentiation()
         {
             Console.WriteLine("~ Exponentiation ~");
             Console.WriteLine("The result = " + Calc.Exponenter(AskUserForNumber("your base number: "), AskUserForNumber("your exponent number: ")));
-
-            //double num1, num2;
-            //numSum;
-            //num1 = AskUserForNumber("your base number: ");
-            //num2 = AskUserForNumber("your exponent number: ");
-
-            /*
-            double _num1 = Math.Abs(num1);
-            double _num2 = Math.Abs(num2);
-
-            numSum = Math.Pow(_num1, _num2);
-            double _numSum = -(1 / numSum);
-            */
-            
-            /*numSum = Math.Pow(num1, num2);
-            if(num1 < 0 && num2 % 2 == 0)
-            {
-                numSum = numSum * -1;
-            }
-            
-            Console.WriteLine("\n" + num1 + " ^ " + num2 + " = " + numSum + "\n");*/
         }
     }
 }

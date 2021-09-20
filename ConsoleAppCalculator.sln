@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppCalculator", "ConsoleAppCalculator\ConsoleAppCalculator.csproj", "{EB9E99F9-5E4D-4972-9E1A-2152B6097C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppCalculator", "ConsoleAppCalculator\ConsoleAppCalculator.csproj", "{EB9E99F9-5E4D-4972-9E1A-2152B6097C15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppCalculator.Tests", "ConsoleAppCalculator.Tests\ConsoleAppCalculator.Tests.csproj", "{C072AD1E-3766-4746-A8B7-BFFB65F33898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EB9E99F9-5E4D-4972-9E1A-2152B6097C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB9E99F9-5E4D-4972-9E1A-2152B6097C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB9E99F9-5E4D-4972-9E1A-2152B6097C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C072AD1E-3766-4746-A8B7-BFFB65F33898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C072AD1E-3766-4746-A8B7-BFFB65F33898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C072AD1E-3766-4746-A8B7-BFFB65F33898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C072AD1E-3766-4746-A8B7-BFFB65F33898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
