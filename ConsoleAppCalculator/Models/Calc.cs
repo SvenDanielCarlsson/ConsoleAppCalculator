@@ -6,54 +6,52 @@ namespace ConsoleAppCalculator
 {
     public class Calc
     {
-        public static double Add(double num1, double num2)
+        public static decimal Add(decimal num1, decimal num2)
         {   
             return num1 + num2;
         }
-        public static double Add(double[] multiAdd)
+        public static decimal Add(decimal[] multiAdd)
         {
-            double result = 0;
+            decimal result = 0;
             for(int i = 0; i < multiAdd.Length; i++)
             {
                 result = result + multiAdd[i];
             }
             return result;
-        }
+        }// END OF ADD
 
-        public static double Subtract(double num1, double num2)
+        public static decimal Subtract(decimal num1, decimal num2)
         {
             return num1 - num2;
         }
-        public static double Subtract(double[] multiSub)
+        public static decimal Subtract(decimal[] multiSub)
         {
-            double result = 0;
-            for(int i = 0; i < multiSub.Length; i++)
+            decimal result = multiSub[0];
+            for(int i = 1; i < multiSub.Length; i++)
             {
                 result = result - multiSub[i];
             }
             return result;
-        }
+        }// END OF SUBTRACT
 
         public static decimal Divider(decimal num1, decimal num2)
         {
-            decimal numSum = 0;
             try
             {
-            return numSum = num1 / num2;
+            return num1 / num2;
             }
             catch (DivideByZeroException)
             {
                 throw new DivideByZeroException();
             }
-            //return num1 / num2;
         }
 
-        public static double Multplier(double num1, double num2)
+        public static decimal Multplier(decimal num1, decimal num2)
         {
             return num1 * num2;
         }
 
-        public static double Exponenter(double num1, double num2)   //NEEDS IMPROVEMENT
+        public static double Exponenter(decimal num1, decimal num2)   //NEEDS IMPROVEMENT
         {
             /*
             double _num1 = Math.Abs(num1);
@@ -63,7 +61,7 @@ namespace ConsoleAppCalculator
             double _numSum = -(1 / numSum);
             */
 
-            double numSum = Math.Pow(num1, num2);
+            double numSum = Math.Pow((double)num1, (double)num2);
             if (num1 < 0 && num2 % 2 == 0)
             {
                 numSum = numSum * -1;

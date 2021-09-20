@@ -19,7 +19,7 @@ namespace ConsoleAppCalculator
                                   "\n5. Exponentiation (experimental)" +
                                   "\n6. Experiement");
 
-                double selection = AskUserForNumber("what you want to do: ");
+                decimal selection = AskUserForNumber("what you want to do: ");
                 Console.Clear();
                 switch (selection)
                 {
@@ -63,24 +63,24 @@ namespace ConsoleAppCalculator
             Console.Clear();
         }
 
-        static double AskUserForNumber(string what)
+        static decimal AskUserForNumber(string what)
         {
-            bool notNumber;
+            bool notNumber = true;
             string testInput;
-            double result;
+            decimal result;
 
             do
             {
                 testInput = AskUserFor(what);
                 try
                 {
-                    result = double.Parse(testInput);
+                    result = decimal.Parse(testInput);
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine($"'{testInput}' is not a number");
                 }
-                notNumber = !double.TryParse(testInput, out result);
+                notNumber = !decimal.TryParse(testInput, out result);
             } while (notNumber);
 
             return result;
@@ -93,16 +93,16 @@ namespace ConsoleAppCalculator
             return userInput;
         }
 
-        static double[] AskForMultipleNumbers()
+        static decimal[] AskForMultipleNumbers()
         {
             int howMany;
             do
             {
                 howMany = (int)AskUserForNumber("how many inputs (max 20) you want to use: ");
-                if (howMany > 20) { howMany = 20; }
+                if (howMany > 20) { howMany = 20; } else if (howMany < 0) { Console.WriteLine("Can not choose less than 0!"); }
             } while (howMany < 0);
 
-            double[] userInput = new double[howMany];
+            decimal[] userInput = new decimal[howMany];
 
             for (int i = 0; i < userInput.Length; i++)
             {
@@ -124,7 +124,7 @@ namespace ConsoleAppCalculator
                                     "\nPress '2' for several inputs" +
                                     "\nPress '3' to go back to Main menu");
 
-                double addSelection = AskUserForNumber("what you want to do: ");
+                decimal addSelection = AskUserForNumber("what you want to do: ");
                 Console.Clear();
                 switch (addSelection)
                 {
@@ -156,7 +156,7 @@ namespace ConsoleAppCalculator
                                     "\nPress '1' for two inputs" +
                                     "\nPress '2' for several inputs" +
                                     "\nPress '3' to go to Main Menu");
-                double subSelection = AskUserForNumber("what you want to do: ");
+                decimal subSelection = AskUserForNumber("what you want to do: ");
                 Console.Clear();
                 switch (subSelection)
                 {
@@ -182,8 +182,12 @@ namespace ConsoleAppCalculator
         static void Division()
         {
             Console.WriteLine("~ Division ~");
-            Console.WriteLine(Calc.Divider(Convert.ToDecimal(AskUserForNumber("a number to be divided: ")), Convert.ToDecimal(AskUserForNumber("a number to divide with: "))));
-        }        
+            try
+            {
+                Console.WriteLine(Calc.Divider(AskUserForNumber("a number to be divided: "), AskUserForNumber("a number to divide with: ")));
+            }
+            catch (DivideByZeroException) { Console.WriteLine("Can't divide with 0"); }
+        }
         static void Multiplication()
         {
             Console.WriteLine("~ Multiplication ~");
