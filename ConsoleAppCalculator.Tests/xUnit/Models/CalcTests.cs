@@ -121,9 +121,11 @@ namespace ConsoleAppCalculator.Tests
         public void Subtract_Overload_ZeroStart_02()
         {
             //Arrange
+            string B = null;
+            decimal testA = Convert.ToDecimal(B);
             decimal expected = 12;
             decimal[] multiSub = new decimal[4];
-            multiSub[0] = 0;
+            multiSub[0] = testA;
             multiSub[1] = -5;
             multiSub[2] = 2;
             multiSub[3] = -9;
