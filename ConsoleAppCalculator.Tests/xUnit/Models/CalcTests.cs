@@ -82,6 +82,7 @@ namespace ConsoleAppCalculator.Tests
 
         //  START OF SUBTRACT
         [Theory]
+        [InlineData(0, 5, -5)]
         [InlineData(-2, 5, -7)]
         [InlineData(2, -5, 7)]
         [InlineData(2, 5, -3)]
@@ -96,6 +97,41 @@ namespace ConsoleAppCalculator.Tests
             //ACT
             decimal actual = Calc.Subtract(num1, num2);
             //ASSERT
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Subtract_Overload_ZeroStart_01()
+        {
+            //Arrange
+            decimal expected = 2;
+            decimal[] multiSub = new decimal[4];
+            multiSub[0] = 0;
+            multiSub[1] = 5;
+            multiSub[2] = 2;
+            multiSub[3] = -9;
+
+            //Act
+            decimal actual = Calc.Subtract(multiSub);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void Subtract_Overload_ZeroStart_02()
+        {
+            //Arrange
+            decimal expected = 12;
+            decimal[] multiSub = new decimal[4];
+            multiSub[0] = 0;
+            multiSub[1] = -5;
+            multiSub[2] = 2;
+            multiSub[3] = -9;
+
+            //Act
+            decimal actual = Calc.Subtract(multiSub);
+
+            //Assert
             Assert.Equal(expected, actual);
         }
         [Fact]
