@@ -137,6 +137,19 @@ namespace ConsoleAppCalculator.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
+        public void Subtract_Overload_EmptyArray()
+        {
+            //Arrange
+            decimal expected = 0;
+            decimal[] multiSub = new decimal[0];
+
+            //Act
+            decimal actual = Calc.Subtract(multiSub);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
         public void Subtract_Overload_PositiveInput()
         {
             //ARRANGE
