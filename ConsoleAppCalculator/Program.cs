@@ -112,8 +112,8 @@ namespace ConsoleAppCalculator
         }
 
 
-        //  -   -   -   -   Mathematical methods    -   -   -   -
 
+        //  -   -   -   -   Calculator Menu Choises   -   -   -   -
         static void Addition()
         {
             bool addLoop = true;
@@ -186,7 +186,7 @@ namespace ConsoleAppCalculator
             {
                 Console.WriteLine(Calc.Divider(AskUserForNumber("a number to be divided: "), AskUserForNumber("a number to divide with: ")));
             }
-            catch (DivideByZeroException) { Console.WriteLine("Can't divide with 0"); }
+            catch (DivideByZeroException) { Console.WriteLine("Can not divide with 0"); }
         }
         static void Multiplication()
         {

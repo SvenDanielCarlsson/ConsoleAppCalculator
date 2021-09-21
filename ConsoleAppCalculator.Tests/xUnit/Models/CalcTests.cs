@@ -99,9 +99,9 @@ namespace ConsoleAppCalculator.Tests
             //ASSERT
             Assert.Equal(expected, actual);
         }
-
+        
         [Fact]
-        public void Subtract_Overload_ZeroStart_01()
+        public void Subtract_Overload_ZeroStart()
         {
             //Arrange
             decimal expected = 2;
@@ -118,7 +118,7 @@ namespace ConsoleAppCalculator.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void Subtract_Overload_ZeroStart_02()
+        public void Subtract_Overload_NullStart()
         {
             //Arrange
             string B = null;
