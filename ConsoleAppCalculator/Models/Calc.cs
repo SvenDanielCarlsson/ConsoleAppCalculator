@@ -26,8 +26,6 @@ namespace ConsoleAppCalculator
         }
         public static decimal Subtract(decimal[] multiSub)
         {
-            //if (multiSub.Length < 1)
-            //{ throw (IndexOutOfRangeException); }
             try { decimal testrResult = multiSub[0]; } catch (IndexOutOfRangeException){ return 0; }
             decimal result = multiSub[0];
                 for (int i = 1; i < multiSub.Length; i++)
